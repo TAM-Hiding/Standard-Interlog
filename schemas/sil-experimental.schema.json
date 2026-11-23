@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profile", "intent", "claims", "constraints", "action", "taskStatus", "checks", "reportedScope"],
+  "properties": {
+    "profile": {"const": "sil-experiment/0"},
+    "intent": {"enum": ["request", "report", "clarify"]},
+    "claims": {"type": "array", "maxItems": 24, "items": {"$ref": "#/$defs/claim"}},
+    "constraints": {"type": "array", "maxItems": 12, "items": {"$ref": "#/$defs/text"}},
+    "action": {"type": "object", "additionalProperties": false, "required": ["requested", "completed"], "properties": {
+      "requested": {"anyOf": [{"$ref": "#/$defs/text"}, {"type": "null"}]},
+      "completed": {"type": "array", "maxItems": 12, "items": {"$ref": "#/$defs/text"}}
+    }},
+    "taskStatus": {"enum": ["completed", "partial", "blocked", "unknown"]},
+    "checks": {"type": "array", "maxItems": 12, "items": {"$ref": "#/$defs/check"}},
+    "reportedScope": {"anyOf": [{"$ref": "#/$defs/text"}, {"type": "null"}]}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "maxLength": 600},
+    "evidence": {
+      "type": "array", "maxItems": 12, "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["source", "relation"],
+        "properties": {
+          "source": {"$ref": "#/$defs/text"},
+          "relation": {"enum": ["supports", "contradicts", "unavailable"]}
+        }
+      }
+    },
+    "claim": {
+      "type": "object", "additionalProperties": false,
+      "required": ["statement", "kind", "certainty", "evidence"],
+      "properties": {
+        "statement": {"$ref": "#/$defs/text"},
+        "kind": {"enum": ["observation", "interpretation", "prediction", "reported_verification"]},
+        "certainty": {"enum": ["asserted", "tentative", "disputed", "unknown"]},
+        "evidence": {"$ref": "#/$defs/evidence"}
+      }
+    },
+    "check": {
+      "type": "object", "additionalProperties": false,
+      "required": ["check", "criterion", "revision", "outcome", "verifier", "evidence"],
+      "properties": {
+        "check": {"$ref": "#/$defs/text"},
+        "criterion": {"$ref": "#/$defs/text"},
+        "revision": {"$ref": "#/$defs/text"},
+        "outcome": {"enum": ["passed", "failed", "not_run", "inconclusive", "unknown"]},
+        "verifier": {"anyOf": [{"$ref": "#/$defs/text"}, {"type": "null"}]},
+        "evidence": {"$ref": "#/$defs/evidence"}
+      },
+      "allOf": [{
+        "if": {"properties": {"outcome": {"enum": ["passed", "failed"]}}},
+        "then": {"properties": {
+          "verifier": {"$ref": "#/$defs/text"},
+          "evidence": {
+            "contains": {"properties": {"relation": {"const": "supports"}}}
+          }
+        }}
+      }]
+    }
+  }
+}
