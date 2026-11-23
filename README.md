@@ -2,7 +2,7 @@
 
 Standard Interlog (SIL) is a Stargazer research project on communication between heterogeneous AI agents. TAM Nexus is the motivating environment. A receiver should be able to act on a handoff without sharing the sender's model, tokenizer, reasoning architecture, vendor, or conversation history.
 
-SG-001 is a documentation-only research milestone. The proposed first experiment tests whether a small, transport-independent semantic profile improves complete task outcomes over natural language, compact notation, and existing standards used directly. Each format can use whatever representation makes sense for its payload, subject to the experiment's controls. A shorter message is valuable when it reduces total cost while preserving the intended action, evidence, uncertainty, and authority boundaries.
+SG-001 established the research foundation. The SG-002 offline pilot is designed to test whether a small, transport-independent semantic profile improves complete task outcomes over natural language, compact notation, and existing standards used directly. Each format can use whatever representation makes sense for its payload, subject to the experiment's controls. A shorter message is valuable when it reduces total cost while preserving the intended action, evidence, uncertainty, and authority boundaries.
 
 ## Terminology
 
@@ -20,6 +20,8 @@ SG-001 is a documentation-only research milestone. The proposed first experiment
 | [Semantic core](docs/architecture/SEMANTIC_CORE.md) | Candidate meanings, trust boundaries, and example handoffs |
 | [Benchmark plan](docs/benchmarks/BENCHMARK_PLAN.md) | Controlled comparisons across models, formats, and workloads |
 | [ADR-001](docs/decisions/ADR-001.md) | Provisional direction and criteria for adoption |
+| [Offline pilot](docs/experiments/SG-002-PILOT.md) | Harness, fixtures, scoring, and reproduction commands |
+| [Pilot results](docs/experiments/SG-002-RESULTS.md) | Observed verification and blocked model trials |
 | [Roadmap](docs/ROADMAP.md) | Proposed next scope and later decision points |
 
-The profile is experimental. SG-001 contains no task measurements, implementation, or external standardization claim. Fixtures describe synthetic work in HERO-CAD, Archive, and TAM Nexus. Live integration requires separate approval.
+The profile is experimental. SG-002 includes a local harness and deterministic verification. Real cross-model runs remain blocked pending a verified local pair. Fixtures describe synthetic work in HERO-CAD, Archive, and TAM Nexus. Live integration requires separate approval.

@@ -1,0 +1,27 @@
+{
+  "mode": "blocked",
+  "backends": {},
+  "reason": "no verified local model pair configured",
+  "platform": null,
+  "python": null,
+  "model_seed": 19,
+  "temperature": 0,
+  "max_output_tokens": 768,
+  "call_timeout_seconds": 90,
+  "preflight_seconds": null,
+  "hourly_machine_rate_usd": null,
+  "api_spend_usd": 0,
+  "order_seed": 61123,
+  "inputs_sha256": {
+    "sil_pilot/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sil_pilot/__main__.py": "e759f513c8359156fb4b8285ef682d187af25a4d54564d970b26c8f7d4941377",
+    "sil_pilot/backend.py": "461623ccfd20789a29462055adff48d53829e3431baae72036e3f6db2f3cee98",
+    "sil_pilot/formats.py": "61269bc6b548960301290232f816141b083611d48ab9c9e79b69dc426840c086",
+    "sil_pilot/gguf_worker.py": "999aef3365c08fc8f47571cf235bed51a0108955454ff1fc64995ea0bf35d365",
+    "sil_pilot/report.py": "ccdfe219da672e0d8050e81a22b0c973d6860024951998e4b8ff8cf3fd757be4",
+    "sil_pilot/trials.py": "0708a8188cdbe95e85fe2f7fb4f5c866d7ca45a6d0c8d59257af9034b0b47d0e",
+    "sil_pilot/data/fixtures.json": "1f09a79b9d78442f91e47eab0b642cd9414038a5aa4f99ee1a59315157f55d0a",
+    "schemas/sil-experimental.schema.json": "697cb8dccc9906503c6624bc3d53e9f840bcc3a80f7b25ada08b88e693c98b25",
+    "requirements.txt": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6"
+  }
+}
